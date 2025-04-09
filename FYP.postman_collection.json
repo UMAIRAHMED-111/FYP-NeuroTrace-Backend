@@ -1,0 +1,358 @@
+{
+	"info": {
+		"_postman_id": "335617ff-d1d7-42a3-94fd-6344498faefa",
+		"name": "FYP",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "42817220"
+	},
+	"item": [
+		{
+			"name": "Register a Patient",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"patient1@example.com\",\r\n  \"password\": \"securepassword123\",\r\n  \"role\": \"patient\",\r\n  \"profile\": {\r\n    \"full_name\": \"John Doe\",\r\n    \"phone\": \"555-1234\",\r\n    \"date_of_birth\": \"1990-01-01\",\r\n    \"profile_info\": \"Patient with early-stage memory issues\",\r\n    \"geofence_config\": {\r\n      \"radius\": 500,\r\n      \"center\": [40.7128, -74.0060]\r\n    }\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://127.0.0.1:8000/auth/register"
+			},
+			"response": []
+		},
+		{
+			"name": "Register a Caregiver",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"caregiver1@example.com\",\r\n  \"password\": \"supersecurepassword456\",\r\n  \"role\": \"caregiver\",\r\n  \"profile\": {\r\n    \"full_name\": \"Jane Smith\",\r\n    \"contact_info\": \"555-7890, jane@example.com\",\r\n    \"relationship\": \"Daughter\",\r\n    \"alert_prefs\": {\r\n      \"sms\": true,\r\n      \"email\": true\r\n    },\r\n    \"permissions\": \"full\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://127.0.0.1:8000/auth/register"
+			},
+			"response": []
+		},
+		{
+			"name": "Login Patient",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"patient1@example.com\",\r\n  \"password\": \"securepassword123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8000/auth/token"
+			},
+			"response": []
+		},
+		{
+			"name": "Login Caregiver",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"caregiver1@example.com\",\r\n  \"password\": \"supersecurepassword456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://127.0.0.1:8000/auth/token"
+			},
+			"response": []
+		},
+		{
+			"name": "Patient Information",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjM2UxNTg1Mi0yZDE5LTQzNzAtYWJiMS1hYzdiMGNlNTcyY2IiLCJleHAiOjE3NDQxODc0OTMsImlhdCI6MTc0NDE4NTY5MywianRpIjoiMTIwZjU3NDAtZGQ1OC00NDI3LTgzYTktZjk4MzE0NjJjMDRiIn0.XjcKgOf9ZeUCVsw2xoB_tf8dyJaPYxG6lgEGGLlq3EM",
+						"type": "text"
+					}
+				],
+				"url": "http://localhost:8000/auth/profile"
+			},
+			"response": []
+		},
+		{
+			"name": "Caregiver Information",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1YWI0M2M3NS02ZTlkLTQxNzQtODc4Yi1lMzZkNzEyMDY1Y2MiLCJleHAiOjE3NDQxODc1MTksImlhdCI6MTc0NDE4NTcxOSwianRpIjoiMTc3NzE0MDktNWUyNS00ZTcyLTljMzYtZTgxMjRjNTEzNTYwIn0.siG2q08uV8B6TvIowcZHkMM8PBHcsypOoJSF83wDc6s",
+						"type": "text"
+					}
+				],
+				"url": "http://localhost:8000/auth/profile"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Patient",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjM2UxNTg1Mi0yZDE5LTQzNzAtYWJiMS1hYzdiMGNlNTcyY2IiLCJleHAiOjE3NDQxODg0MzEsImlhdCI6MTc0NDE4NjYzMSwianRpIjoiNzQwYzFlMjAtOThmMC00OWI4LTkwNzUtMDdlYTdjZmI2MTRlIn0.eC5LCrWzQtjNlRf797LQDnEIGVMypx_YfgXvnPRn5Mk",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"user\": {\r\n    \"email\": \"newemail@example.com\"\r\n  },\r\n  \"profile\": {\r\n    \"full_name\": \"Johnathan Doe\",\r\n    \"phone\": \"555-9876\",\r\n    \"geofence_config\": {\r\n      \"center\": [37.7749, -122.4194],\r\n      \"radius\": 1000\r\n    }\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8000/auth/update"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Caregiver",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Proxy-Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjM2UxNTg1Mi0yZDE5LTQzNzAtYWJiMS1hYzdiMGNlNTcyY2IiLCJleHAiOjE3NDQxODc0OTMsImlhdCI6MTc0NDE4NTY5MywianRpIjoiMTIwZjU3NDAtZGQ1OC00NDI3LTgzYTktZjk4MzE0NjJjMDRiIn0.XjcKgOf9ZeUCVsw2xoB_tf8dyJaPYxG6lgEGGLlq3EM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"user\": {\r\n    \"email\": \"updated@example.com\",\r\n    \"password\": \"newsecurepass123\"\r\n  },\r\n  \"profile\": {\r\n    \"full_name\": \"Updated Name\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8000/auth/update"
+			},
+			"response": []
+		},
+		{
+			"name": "Create a Caregiver to Patient Link",
+			"request": {
+				"method": "POST",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a Caregiver to Patient Link",
+			"request": {
+				"method": "DELETE",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Caregivers for a Patient",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMzVmMTIwYS1mODE0LTQ2ZTQtODFkMi0zYjg4NmEwN2VmMDEiLCJleHAiOjE3NDQxOTAzODEsImlhdCI6MTc0NDE4ODU4MSwianRpIjoiZmJjOTVjODctMjkxNS00ZjZiLWJkMjItZjJjMjBmOGFjNzAxIn0.EcUHuwXQWe0kJVnKB9UttqoPEjE8JJHWpOvqvFfgIsk",
+						"type": "text"
+					}
+				],
+				"url": "http://localhost:8000/links/caregivers"
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Patients for a Caregiver",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Create a Notification",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"user_id\": \"c3e15852-2d19-4370-abb1-ac7b0ce572cb\",\r\n  \"title\": \"New link request\",\r\n  \"message\": \"A caregiver has requested to link with your profile\",\r\n  \"type\": \"link\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8000/notifications"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Notifications for a Given User",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMzVmMTIwYS1mODE0LTQ2ZTQtODFkMi0zYjg4NmEwN2VmMDEiLCJleHAiOjE3NDQxOTAzODEsImlhdCI6MTc0NDE4ODU4MSwianRpIjoiZmJjOTVjODctMjkxNS00ZjZiLWJkMjItZjJjMjBmOGFjNzAxIn0.EcUHuwXQWe0kJVnKB9UttqoPEjE8JJHWpOvqvFfgIsk",
+						"type": "text"
+					}
+				],
+				"url": "http://localhost:8000/notifications"
+			},
+			"response": []
+		},
+		{
+			"name": "Get a Specific Notification",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMzVmMTIwYS1mODE0LTQ2ZTQtODFkMi0zYjg4NmEwN2VmMDEiLCJleHAiOjE3NDQxOTAzODEsImlhdCI6MTc0NDE4ODU4MSwianRpIjoiZmJjOTVjODctMjkxNS00ZjZiLWJkMjItZjJjMjBmOGFjNzAxIn0.EcUHuwXQWe0kJVnKB9UttqoPEjE8JJHWpOvqvFfgIsk",
+						"type": "text"
+					}
+				],
+				"url": "http://localhost:8000/notifications/be829027-47a5-46ba-ade5-bac4f2498157"
+			},
+			"response": []
+		},
+		{
+			"name": "Mark a Notification as Read",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMzVmMTIwYS1mODE0LTQ2ZTQtODFkMi0zYjg4NmEwN2VmMDEiLCJleHAiOjE3NDQxOTAzODEsImlhdCI6MTc0NDE4ODU4MSwianRpIjoiZmJjOTVjODctMjkxNS00ZjZiLWJkMjItZjJjMjBmOGFjNzAxIn0.EcUHuwXQWe0kJVnKB9UttqoPEjE8JJHWpOvqvFfgIsk",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"is_read\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8000/notifications/be829027-47a5-46ba-ade5-bac4f2498157"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a Notification",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMzVmMTIwYS1mODE0LTQ2ZTQtODFkMi0zYjg4NmEwN2VmMDEiLCJleHAiOjE3NDQxOTAzODEsImlhdCI6MTc0NDE4ODU4MSwianRpIjoiZmJjOTVjODctMjkxNS00ZjZiLWJkMjItZjJjMjBmOGFjNzAxIn0.EcUHuwXQWe0kJVnKB9UttqoPEjE8JJHWpOvqvFfgIsk",
+						"type": "text"
+					}
+				],
+				"url": "http://localhost:8000/notifications/be829027-47a5-46ba-ade5-bac4f2498157"
+			},
+			"response": []
+		},
+		{
+			"name": "Create a Reminder",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"user_id\": \"135f120a-f814-46e4-81d2-3b886a07ef01\",\r\n  \"title\": \"Take morning medication\",\r\n  \"description\": \"Remember to take memory supplements before breakfast\",\r\n  \"scheduled_for\": \"2025-04-10T08:00:00Z\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8000/reminders"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Reminders for a Given User",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMzVmMTIwYS1mODE0LTQ2ZTQtODFkMi0zYjg4NmEwN2VmMDEiLCJleHAiOjE3NDQxOTI5NjYsImlhdCI6MTc0NDE5MTE2NiwianRpIjoiMzVmNWZkZDYtNzIzMy00MzA2LTlmYTgtOTcyYWIyODExZWI4In0.gF94_3wgbg6i0I4FBrp6XzOcQOMSFjQQ1xutFY2v_yM",
+						"type": "text"
+					}
+				],
+				"url": "http://localhost:8000/reminders"
+			},
+			"response": []
+		},
+		{
+			"name": "Get a Specific Reminder",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMzVmMTIwYS1mODE0LTQ2ZTQtODFkMi0zYjg4NmEwN2VmMDEiLCJleHAiOjE3NDQxOTI5NjYsImlhdCI6MTc0NDE5MTE2NiwianRpIjoiMzVmNWZkZDYtNzIzMy00MzA2LTlmYTgtOTcyYWIyODExZWI4In0.gF94_3wgbg6i0I4FBrp6XzOcQOMSFjQQ1xutFY2v_yM",
+						"type": "text"
+					}
+				],
+				"url": "http://localhost:8000/reminders/934a61c2-1414-4df0-8298-3d6ed7b36f18"
+			},
+			"response": []
+		},
+		{
+			"name": "Mark a Reminder as Complete",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMzVmMTIwYS1mODE0LTQ2ZTQtODFkMi0zYjg4NmEwN2VmMDEiLCJleHAiOjE3NDQxOTI5NjYsImlhdCI6MTc0NDE5MTE2NiwianRpIjoiMzVmNWZkZDYtNzIzMy00MzA2LTlmYTgtOTcyYWIyODExZWI4In0.gF94_3wgbg6i0I4FBrp6XzOcQOMSFjQQ1xutFY2v_yM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"is_completed\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8000/reminders/934a61c2-1414-4df0-8298-3d6ed7b36f18"
+			},
+			"response": []
+		}
+	]
+}
