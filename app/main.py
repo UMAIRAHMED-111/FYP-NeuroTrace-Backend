@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Depends, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
-from app.routes import auth, users, patients, caregivers, links, notifications, reminders
+from app.routes import auth, users, patients, caregivers, links, notifications, reminders, ml_pipeline
 from app.database import engine, Base
 import logging
 from typing import Dict, Any
@@ -61,6 +61,7 @@ app.include_router(caregivers.router, prefix="/caregivers")
 app.include_router(links.router, prefix="/links")
 app.include_router(notifications.router, prefix="/notifications")
 app.include_router(reminders.router, prefix="/reminders")
+app.include_router(ml_pipeline.router, prefix="/ml-pipeline")
 
 @app.get("/", tags=["Root"], include_in_schema=False)
 def read_root() -> Dict[str, str]:
