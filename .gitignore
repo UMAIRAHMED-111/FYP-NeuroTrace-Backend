@@ -1,0 +1,113 @@
+# ========================================
+# Python
+# ========================================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.venv/
+.ENV/
+
+# Jupyter
+.ipynb_checkpoints
+*.ipynb
+
+# ========================================
+# Model Checkpoints / ML Files
+# ========================================
+*.h5
+*.hdf5
+*.pkl
+*.pth
+*.pt
+*.ckpt
+*.tflite
+*.onnx
+*.joblib
+*.pb
+*.tar
+*.npz
+*.npy
+
+# ========================================
+# IDEs / Editors
+# ========================================
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# ========================================
+# System Files
+# ========================================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ========================================
+# Log and Temp Files
+# ========================================
+*.log
+*.tmp
+*.swp
+*.bak
+*.old
+
+# ========================================
+# FastAPI / Uvicorn / Web
+# ========================================
+*.sqlite3
+instance/
+*.db
+*.db-journal
+*.pem
+
+# ========================================
+# Git
+# ========================================
+*.orig
+*.rej
+
+# ========================================
+# Uploads / Output folders
+# ========================================
+temp_uploads/
+uploads/
+media/
+output/
+runs/
+
+# ========================================
+# Test & Coverage
+# ========================================
+htmlcov/
+.coverage
+.cache
+pytest_cache/
+nosetests.xml
+coverage.xml
+.tox/
+
+# ========================================
+# Node (if frontend is in project)
+# ========================================
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# ========================================
+# Env Files
+# ========================================
+.env
+.env.*
