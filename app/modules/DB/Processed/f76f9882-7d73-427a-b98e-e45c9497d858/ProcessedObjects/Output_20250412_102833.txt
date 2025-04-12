@@ -1,0 +1,52 @@
+
+🔍 Processing: frame_0.jpg
+🧠 Detected Objects in This Frame:
+🏞️ Predicted Scene: /s/staircase 12
+
+🔍 Processing: frame_1.jpg
+🧠 Detected Objects in This Frame:
+   - airplane
+🏞️ Predicted Scene: /s/staircase 12
+
+🔍 Processing: frame_2.jpg
+🧠 Detected Objects in This Frame:
+🏞️ Predicted Scene: /s/staircase 12
+
+🔍 Processing: frame_3.jpg
+🧠 Detected Objects in This Frame:
+🏞️ Predicted Scene: /g/garage-indoor 5
+
+🔍 Processing: frame_4.jpg
+🧠 Detected Objects in This Frame:
+🏞️ Predicted Scene: /g/garage-indoor 5
+
+🔍 Processing: frame_5.jpg
+🧠 Detected Objects in This Frame:
+🏞️ Predicted Scene: /g/garage-indoor 5
+
+🔍 Processing: frame_6.jpg
+🧠 Detected Objects in This Frame:
+   - bed
+🏞️ Predicted Scene: /h/home_office 6
+
+🔍 Processing: frame_7.jpg
+🧠 Detected Objects in This Frame:
+🏞️ Predicted Scene: /c/closet 3
+
+🔍 Processing: frame_8.jpg
+🧠 Detected Objects in This Frame:
+🏞️ Predicted Scene: /b/bedroom 2
+
+🔍 Processing: frame_9.jpg
+🧠 Detected Objects in This Frame:
+🏞️ Predicted Scene: /g/garage-indoor 5
+
+🎯 ===== FINAL SUMMARY =====
+✅ Object Detection Dictionary:
+   - airplane: 1 time(s)
+   - bed: 1 time(s)
+
+🏆 Final Scene Prediction (Majority Vote): /g/garage-indoor 5
+
+🧹 Deleting all processed frames...
+✅ Cleanup complete.

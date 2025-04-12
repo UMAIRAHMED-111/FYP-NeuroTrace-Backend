@@ -18,10 +18,11 @@ def analyze_video(video_path: str, interval: int = 1):
 
     print("\n🧠 Step 2: Running frame processing pipeline...")
     pipeline = FramePipeline()
-    object_dict, final_scene = pipeline.process_frames()
+    object_dict, final_scene, output_path  = pipeline.process_frames()
 
     print("\n📦 Final Output:")
     print(f"Detected Objects: {object_dict}")
     print(f"Majority Scene Prediction: {final_scene}")
+    print(f"Output Path: {output_path}")
 
-    return object_dict, final_scene
+    return object_dict, final_scene, output_path

@@ -5,6 +5,7 @@ from torchvision import models, transforms
 from PIL import Image
 from collections import defaultdict, Counter
 from ultralytics import YOLO
+from contextlib import redirect_stdout
 
 from app.modules.object_analysis.model import (
     Object_CDOPM_ResNet18,
@@ -107,44 +108,47 @@ class FramePipeline:
         if not os.path.exists(self.frames_dir):
             raise FileNotFoundError(f"Frames folder not found: {self.frames_dir}")
 
-        frame_files = [f for f in os.listdir(self.frames_dir) if f.lower().endswith(('.jpg', '.jpeg', '.png'))]
+        output_path = os.path.join(self.frames_dir, "output.txt")
+        with open(output_path, "w", encoding="utf-8") as f:
+            with redirect_stdout(f):
+                frame_files = [f for f in os.listdir(self.frames_dir) if f.lower().endswith(('.jpg', '.jpeg', '.png'))]
 
-        if not frame_files:
-            print("No frames found in the folder.")
-            return
+                if not frame_files:
+                    print("No frames found in the folder.")
+                    return
 
-        for frame_file in frame_files:
-            frame_path = os.path.join(self.frames_dir, frame_file)
-            print(f"\n🔍 Processing: {frame_file}")
+                for frame_file in frame_files:
+                    frame_path = os.path.join(self.frames_dir, frame_file)
+                    print(f"\n🔍 Processing: {frame_file}")
 
-            detected = self.detect_objects(frame_path)
-            for obj in detected:
-                self.object_counter[obj] += 1
+                    detected = self.detect_objects(frame_path)
+                    for obj in detected:
+                        self.object_counter[obj] += 1
 
-            print(f"🧠 Detected Objects in This Frame:")
-            for obj in detected:
-                print(f"   - {obj}")
+                    print(f"🧠 Detected Objects in This Frame:")
+                    for obj in detected:
+                        print(f"   - {obj}")
 
-            scene = self.predict_scene(frame_path)
-            self.scene_votes.append(scene)
-            print(f"🏞️ Predicted Scene: {scene}")
+                    scene = self.predict_scene(frame_path)
+                    self.scene_votes.append(scene)
+                    print(f"🏞️ Predicted Scene: {scene}")
 
-        # Final results
-        print("\n🎯 ===== FINAL SUMMARY =====")
-        print("✅ Object Detection Dictionary:")
-        for obj, count in sorted(self.object_counter.items()):
-            print(f"   - {obj}: {count} time(s)")
+                # Final results
+                print("\n🎯 ===== FINAL SUMMARY =====")
+                print("✅ Object Detection Dictionary:")
+                for obj, count in sorted(self.object_counter.items()):
+                    print(f"   - {obj}: {count} time(s)")
 
-        final_scene = Counter(self.scene_votes).most_common(1)[0][0]
-        print(f"\n🏆 Final Scene Prediction (Majority Vote): {final_scene}")
+                final_scene = Counter(self.scene_votes).most_common(1)[0][0]
+                print(f"\n🏆 Final Scene Prediction (Majority Vote): {final_scene}")
 
-        # Clean up
-        print("\n🧹 Deleting all processed frames...")
-        for f in frame_files:
-            os.remove(os.path.join(self.frames_dir, f))
-        print("✅ Cleanup complete.")
+                # Clean up
+                print("\n🧹 Deleting all processed frames...")
+                for f in frame_files:
+                    os.remove(os.path.join(self.frames_dir, f))
+                print("✅ Cleanup complete.")
 
-        return dict(self.object_counter), final_scene
+        return dict(self.object_counter), final_scene, output_path
 
 
 if __name__ == '__main__':
